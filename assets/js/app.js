@@ -33,6 +33,28 @@ window.addEventListener("phx:page-loading-stop", _info => topbar.hide())
 // connect if there are any LiveViews on the page
 liveSocket.connect()
 
+let Hooks = {};
+
+Hooks.DragDrop = {
+  mounted() {
+    this.el.addEventListener("dragstart", e => {
+      e.dataTransfer.setData("text/plain", this.el.dataset.rowId);
+    });
+
+    this.el.addEventListener("dragover", e => {
+      e.preventDefault(); // Permite que o evento drop aconteça
+    });
+
+    this.el.addEventListener("drop", e => {
+      e.preventDefault();
+      let targetId = e.target.closest("tr").dataset.rowId;
+      let draggedId = e.dataTransfer.getData("text/plain");
+      this.pushEvent("move-row", { dragged_id: draggedId, target_id: targetId });
+    });
+  }
+}
+
+
 // expose liveSocket on window for web console debug logs and latency simulation:
 // >> liveSocket.enableDebug()
 // >> liveSocket.enableLatencySim(1000)  // enabled for duration of browser session

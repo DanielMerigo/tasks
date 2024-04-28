@@ -3,16 +3,22 @@ defmodule TasksWeb.UserLoginLive do
 
   def render(assigns) do
     ~H"""
-    <div class="w-full h-full">
-    <div class="mx-auto max-w-md bg-red p-6 rounded-lg shadow-lg">
+    <div class="min-h-screen min-w-full p-32 bg-dark_gray">
+      <div class="mx-auto max-w-md bg-red p-6 rounded-lg shadow-lg bg-light_gray">
         <.header class="text-center">
-          Log in to account
+          <span class="text-off_white">
+            Log in to account
+          </span>
           <:subtitle>
-            Don't have an account?
+            <span class="text-off_white">
+              Don't have an account?
+            </span>
             <.link navigate={~p"/users/register"} class="font-semibold text-brand hover:underline">
               Sign up
             </.link>
-            for an account now.
+            <span class="text-off_white">
+              for an account now.
+            </span>
           </:subtitle>
         </.header>
 

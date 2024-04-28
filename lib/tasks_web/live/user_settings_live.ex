@@ -5,19 +5,18 @@ defmodule TasksWeb.UserSettingsLive do
 
   def render(assigns) do
     ~H"""
-    <.header class="text-center">
-      Account Settings
-      <:subtitle>Manage your account email address and password settings</:subtitle>
-    </.header>
+    <div class="pt-8">
+      <.header class="text-center">
+        <span class="text-off_white">
+          Account Settings
+        </span>
+        <:subtitle><span class="text-off_white">Manage your account email address and password settings </span></:subtitle>
+      </.header>
+    </div>
 
-    <div class="space-y-12 divide-y">
-      <div>
-        <.simple_form
-          for={@email_form}
-          id="email_form"
-          phx-submit="update_email"
-          phx-change="validate_email"
-        >
+    <div class="space-y-12 divide-y py-12 px-32">
+      <div class="border border-light_gray p-6 rounded-lg shadow-lg bg-light_gray">
+        <.simple_form for={@email_form} id="email_form" phx-submit="update_email" phx-change="validate_email">
           <.input field={@email_form[:email]} type="email" label="Email" required />
           <.input
             field={@email_form[:current_password]}
@@ -33,7 +32,7 @@ defmodule TasksWeb.UserSettingsLive do
           </:actions>
         </.simple_form>
       </div>
-      <div>
+      <div class="border border-light_gray p-6 rounded-lg shadow-lg bg-light_gray">
         <.simple_form
           for={@password_form}
           id="password_form"
@@ -43,18 +42,9 @@ defmodule TasksWeb.UserSettingsLive do
           phx-submit="update_password"
           phx-trigger-action={@trigger_submit}
         >
-          <input
-            name={@password_form[:email].name}
-            type="hidden"
-            id="hidden_user_email"
-            value={@current_email}
-          />
+          <input name={@password_form[:email].name} type="hidden" id="hidden_user_email" value={@current_email} />
           <.input field={@password_form[:password]} type="password" label="New password" required />
-          <.input
-            field={@password_form[:password_confirmation]}
-            type="password"
-            label="Confirm new password"
-          />
+          <.input field={@password_form[:password_confirmation]} type="password" label="Confirm new password" />
           <.input
             field={@password_form[:current_password]}
             name="current_password"

@@ -15,6 +15,14 @@ module.exports = {
     extend: {
       colors: {
         brand: "#FD4F00",
+        dark_gray: "#302E2B",
+        light_gray: "#8C8173",
+        light_brown: "#715B45",
+        medium_brown: "#4F4438",
+        dark_brown: "#2B1F13",
+        customized_yellow: "#E8B179",
+        off_white: "#fbf7f5",
+        dark_gray_opacity: "rgba(48, 46, 43, 0.7)"
       }
     },
   },

@@ -14,7 +14,7 @@ defmodule TasksWeb.PageController do
       _ ->
         conn
         |> assign(:user, user)
-        |> render("home.html")
+        |> redirect(to: ~p"/tasks")
     end
   end
 end
