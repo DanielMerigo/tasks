@@ -1,5 +1,5 @@
-<div class="min-h-screen min-w-full bg-dark_gray p-32 justify-center">
-  <div class="flex justify-center">
+<div class="min-h-screen min-w-full bg-dark_gray p-32 justify-center sm:p-0 sm:min-w-full lg:px-36">
+  <div class="flex justify-center p-8">
     <.header>
       <span class="text-off_white">Create a new task</span>
       <:actions>
@@ -10,7 +10,7 @@
     </.header>
   </div>
 
-  <div class="bg-dark_gray px-12 py-2 mt-8 border border-dark_gray rounded-lg">
+  <div class="bg-dark_gray px-12 py-2 border border-dark_gray rounded-lg">
     <.table id="tasks" rows={@streams.tasks}>
       <:col :let={{_id, task}}>
         <form phx-change="toggle_row" phx-value-id={task.id}>
@@ -25,14 +25,14 @@
       <:action :let={{_id, task}}>
         <.link patch={~p"/tasks/#{task}/edit"}>
           <.button>
-            Edit
+            <.icon name="hero-pencil" class="text-off_white flex itens-center justify-center" />
           </.button>
         </.link>
       </:action>
       <:action :let={{id, task}}>
         <.link phx-click={JS.push("delete", value: %{id: task.id}) |> hide("##{id}")} data-confirm="Are you sure?">
           <.button>
-            Delete
+            <.icon name="hero-trash" class="text-off_white flex itens-center justify-center" />
           </.button>
         </.link>
       </:action>
