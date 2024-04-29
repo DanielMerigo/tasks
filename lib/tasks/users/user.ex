@@ -1,4 +1,7 @@
 defmodule Tasks.Users.User do
+  @moduledoc """
+  A schema for users.
+  """
   use Ecto.Schema
   import Ecto.Changeset
 

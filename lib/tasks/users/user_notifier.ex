@@ -1,4 +1,7 @@
 defmodule Tasks.Users.UserNotifier do
+  @moduledoc """
+  This module provides functions to send emails to users.
+  """
   import Swoosh.Email
 
   alias Tasks.Mailer

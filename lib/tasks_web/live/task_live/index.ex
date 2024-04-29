@@ -23,6 +23,14 @@ defmodule TasksWeb.TaskLive.Index do
     {:noreply, socket}
   end
 
+  @impl true
+  def handle_event("delete", %{"id" => id}, socket) do
+    task = TaskManagement.get_task!(id)
+    {:ok, _} = TaskManagement.delete_task(task)
+
+    {:noreply, stream_delete(socket, :tasks, task)}
+  end
+
   defp apply_action(socket, :edit, %{"id" => id}) do
     socket
     |> assign(:page_title, "Edit Task")
@@ -44,13 +52,5 @@ defmodule TasksWeb.TaskLive.Index do
   @impl true
   def handle_info({TasksWeb.TaskLive.FormComponent, {:saved, task}}, socket) do
     {:noreply, stream_insert(socket, :tasks, task)}
-  end
-
-  @impl true
-  def handle_event("delete", %{"id" => id}, socket) do
-    task = TaskManagement.get_task!(id)
-    {:ok, _} = TaskManagement.delete_task(task)
-
-    {:noreply, stream_delete(socket, :tasks, task)}
   end
 end

@@ -1,4 +1,7 @@
 defmodule Tasks.Users.UserToken do
+  @moduledoc """
+  This module provides functions to generate and verify tokens for users.
+  """
   use Ecto.Schema
   import Ecto.Query
   alias Tasks.Users.UserToken

@@ -1,4 +1,7 @@
 defmodule Tasks.TaskManagement.Task do
+  @moduledoc """
+    A schema for tasks.
+  """
   use Ecto.Schema
   import Ecto.Changeset
 

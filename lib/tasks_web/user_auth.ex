@@ -1,4 +1,7 @@
 defmodule TasksWeb.UserAuth do
+  @moduledoc """
+  This module provides functions to authenticate users.
+  """
   use TasksWeb, :verified_routes
 
   import Plug.Conn
